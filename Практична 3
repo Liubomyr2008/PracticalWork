@@ -1,0 +1,35 @@
+#include <stdio.h> //практика 3
+
+int main() {
+    int p;
+
+    printf("Введіть кількість розрядів: ");
+    scanf("%d", &p);
+
+    if (p == 1) {
+        printf("Кількість чисел: 2\n");
+        return 0;
+    }
+
+    long long end5_1 = 1, end5_2 = 0;
+    long long end9_1 = 1, end9_2 = 0;
+
+    for (int i = 2; i <= p; i++) {
+        long long new_end5_1 = end9_1 + end9_2;
+        long long new_end5_2 = end5_1;
+
+        long long new_end9_1 = end5_1 + end5_2;
+        long long new_end9_2 = end9_1;
+
+        end5_1 = new_end5_1;
+        end5_2 = new_end5_2;
+        end9_1 = new_end9_1;
+        end9_2 = new_end9_2;
+    }
+
+    long long result = end5_1 + end5_2 + end9_1 + end9_2;
+
+    printf("Кількість чисел: %lld\n", result);
+
+    return 0;
+}
